@@ -45,50 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         print (url.description)
         
-        let requestToken = BDBOAuth1Credential (queryString: url.query)
+        TwitterClient.sharedInstance?.handleOpenURL(open: url)
         
-        let twitterClient = BDBOAuth1SessionManager (baseURL: NSURL(string: "https://api.twitter.com") as! URL, consumerKey: "ZAGlDoZ4vkMoi7VtNRnogjJEE", consumerSecret: "l48UW8Ze1ciCg7sHpPwhVGhzCzyNJEPGen5LYevfEBPimjsIoG")
-        
-        twitterClient?.fetchAccessToken(withPath: "/oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential?) in
-            print ("I got the access token")
-            
-            
-            twitterClient?.get("1.1/account/verify_credentials.json", parameters: nil, progress: nil,
-                               success: { (task: URLSessionDataTask, response: Any?) -> Void in
-                print("account: \(response)")
-                                
-                    
-                                let responseDictionary = response as! NSDictionary
-                                let user = User(userDictionary: responseDictionary)
-                                
-                                print(user.name)
-                                print(user.screenName)
-                                print(user.profileURL)
-                                print(user.tagline)
-                    
-            }, failure: { (task: URLSessionDataTask?, error: Error) in
-            })
-            
-            
-            twitterClient?.get("1.1/statuses/home_timeline.json", parameters: nil, progress: nil,
-                               success: { (task: URLSessionDataTask, response:Any?) in
-                                print ("tweets")
-                                let tweetDictionaries = response as! [NSDictionary]
-                                
-                                let tweets = Tweet.tweetsWithArray(tweetDictionaries: tweetDictionaries)
-                                
-                                for tweet in tweets {
-                                    print (tweet.text)
-                                    print(tweet.timeStamp)
-                                    print(tweet.likesCount)
-                                    print(tweet.retweetCount)
-                                }
-            }, failure: { (task: URLSessionDataTask?, error: Error) in
-                
-            })
-        }, failure: { (error: Error?) in
-            print (error?.localizedDescription)
-        })
         return true
     }
 }
