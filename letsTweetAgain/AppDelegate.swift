@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BDBOAuth1Manager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -41,6 +42,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        print (url.description)
+        
+        let requestToken = BDBOAuth1Credential (queryString: url.query)
+        
+        let twitterClient = BDBOAuth1SessionManager (baseURL: NSURL(string: "https://api.twitter.com") as! URL, consumerKey: "ZAGlDoZ4vkMoi7VtNRnogjJEE", consumerSecret: "l48UW8Ze1ciCg7sHpPwhVGhzCzyNJEPGen5LYevfEBPimjsIoG")
+        
+        twitterClient?.fetchAccessToken(withPath: "/oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential?) in
+            print ("I got the access token")
+            
+            
+            twitterClient?.get("1.1/account/verify_credentials.json", parameters: nil, progress: nil,
+                               success: { (task: URLSessionDataTask, response: Any?) -> Void in
+                print("account: \(response)")
+                                
+                                let user = response as! NSDictionary
+                                print ("name : \(user["name"])")
+            }, failure: { (task: URLSessionDataTask?, error: Error) in
+            })
+            
+            
+            twitterClient?.get("1.1/statuses/home_timeline.json", parameters: nil, progress: nil,
+                               success: { (task: URLSessionDataTask, response:Any?) in
+                                print ("tweets")
+                                let tweets = response as! [NSDictionary]
+                                
+                                for tweet in tweets {
+                                    print ("\(tweet["text"]!)")
+                                }
+            }, failure: { (task: URLSessionDataTask?, error: Error) in
+                
+            })
+        }, failure: { (error: Error?) in
+            print (error?.localizedDescription)
+        })
+        return true
+    }
 }
 
