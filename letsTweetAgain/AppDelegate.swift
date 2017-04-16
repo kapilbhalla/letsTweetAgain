@@ -57,8 +57,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                success: { (task: URLSessionDataTask, response: Any?) -> Void in
                 print("account: \(response)")
                                 
-                                let user = response as! NSDictionary
-                                print ("name : \(user["name"])")
+                    
+                                let responseDictionary = response as! NSDictionary
+                                let user = User(userDictionary: responseDictionary)
+                                
+                                print(user.name)
+                                print(user.screenName)
+                                print(user.profileURL)
+                                print(user.tagline)
+                    
             }, failure: { (task: URLSessionDataTask?, error: Error) in
             })
             
@@ -66,10 +73,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             twitterClient?.get("1.1/statuses/home_timeline.json", parameters: nil, progress: nil,
                                success: { (task: URLSessionDataTask, response:Any?) in
                                 print ("tweets")
-                                let tweets = response as! [NSDictionary]
+                                let tweetDictionaries = response as! [NSDictionary]
+                                
+                                let tweets = Tweet.tweetsWithArray(tweetDictionaries: tweetDictionaries)
                                 
                                 for tweet in tweets {
-                                    print ("\(tweet["text"]!)")
+                                    print (tweet.text)
+                                    print(tweet.timeStamp)
+                                    print(tweet.likesCount)
+                                    print(tweet.retweetCount)
                                 }
             }, failure: { (task: URLSessionDataTask?, error: Error) in
                 

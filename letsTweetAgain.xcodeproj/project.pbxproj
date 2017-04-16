@@ -14,6 +14,8 @@
 		90A31D3A1EA345520043986F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90A31D391EA345520043986F /* Assets.xcassets */; };
 		90A31D3D1EA345520043986F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90A31D3B1EA345520043986F /* LaunchScreen.storyboard */; };
 		90A31D481EA349140043986F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A31D471EA349140043986F /* LoginViewController.swift */; };
+		90A31D4A1EA3EE600043986F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A31D491EA3EE600043986F /* User.swift */; };
+		90A31D4C1EA3EE730043986F /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A31D4B1EA3EE730043986F /* Tweet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		90A31D3C1EA345520043986F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90A31D3E1EA345520043986F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90A31D471EA349140043986F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		90A31D491EA3EE600043986F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		90A31D4B1EA3EE730043986F /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		CA8FC54C8A7A48E12817D469 /* Pods-letsTweetAgain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-letsTweetAgain.debug.xcconfig"; path = "Pods/Target Support Files/Pods-letsTweetAgain/Pods-letsTweetAgain.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +100,8 @@
 		90A31D451EA348D60043986F /* model */ = {
 			isa = PBXGroup;
 			children = (
+				90A31D491EA3EE600043986F /* User.swift */,
+				90A31D4B1EA3EE730043986F /* Tweet.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -238,6 +244,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90A31D4A1EA3EE600043986F /* User.swift in Sources */,
+				90A31D4C1EA3EE730043986F /* Tweet.swift in Sources */,
 				90A31D481EA349140043986F /* LoginViewController.swift in Sources */,
 				90A31D351EA345520043986F /* ViewController.swift in Sources */,
 				90A31D331EA345520043986F /* AppDelegate.swift in Sources */,
