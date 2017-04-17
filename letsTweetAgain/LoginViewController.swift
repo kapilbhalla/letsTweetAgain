@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
         
         // 1. create a client for twitter using the consumer key and consumer secret
         let twitterClient = TwitterClient.sharedInstance
+        
         twitterClient?.login(success: { () -> () in
             print("Iam logged in")
             

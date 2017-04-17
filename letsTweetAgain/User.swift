@@ -14,7 +14,7 @@ class User: NSObject {
     
     var name: String?
     var screenName: String?
-    var profileURL: NSURL?
+    var profileURL: URL?
     var tagline: String?
     
     init(userDictionary: NSDictionary) {
@@ -25,7 +25,7 @@ class User: NSObject {
         
         // This is the way to un-wrap the optional
         if let profileURLStringUnwrapped = profileURLString {
-            profileURL =  NSURL(string: profileURLStringUnwrapped)
+            profileURL = URL(string: profileURLStringUnwrapped)
         }
         
         tagline = userDictionary["description"] as? String

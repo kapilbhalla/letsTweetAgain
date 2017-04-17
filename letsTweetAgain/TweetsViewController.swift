@@ -34,16 +34,25 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
         
         // add refresh control to table view
         tweetTableView.insertSubview(refreshControl, at: 0)
-        
+        loadUser()
         loadTweets()
+        
         // Do any additional setup after loading the view.
     }
     
     
 
     @IBOutlet weak var tweetTableView: UITableView!
-    
     var myTweets: [Tweet] = []
+    var currentUser: User?
+    
+    func loadUser () {
+        TwitterClient.sharedInstance?.validateUser(successCB: { (returnedUser: User) in
+           self.currentUser = returnedUser
+        }, failuerCB: { (error: Error) in
+            print(error.localizedDescription)
+        })
+    }
     
     func loadTweets () {
         TwitterClient.sharedInstance?.homeTimeLine(successCB: { (tweets: [Tweet]) in
@@ -75,7 +84,15 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
             navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: attributeColor]
         }
     }
-
+    
+    @IBAction func onTweet(_ sender: Any) {
+//        if let targetVC = storyboard?.instantiateViewController(withIdentifier: "createTweet") as? CreateTweetViewController {
+//            
+//            targetVC.userDetails = currentUser
+//            self.present(targetVC, animated: true, completion: nil)
+//        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -110,21 +127,24 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        let tweetViewController = segue.destination as! TweetDetails
-        let index = tweetTableView.indexPath(for: sender as! TweetCell)
-        tweetViewController.tweet = myTweets[(index?.row)!]
-        
-        //let navigationController = segue.destination as? UINavigationController
-//        if let destinationVC = navigationController?.topViewController as? ComposeTweetViewController {
-//            destinationVC.delegate = self
-//        }
-        
-//        if let destinationVC = navigationController?.topViewController as? TweetDetails {
-//        
-//        }
+        let navigationController = segue.destination as? UINavigationController
+        if let destinationVC = navigationController?.topViewController as? CreateTweetViewController {
+            destinationVC.userDetails = self.currentUser
+            //destinationVC.delegate = self
+        }
+        if let destinationVC = navigationController?.topViewController as? TweetDetails {
+            let index = tweetTableView.indexPath(for: sender as! TweetCell)
+            destinationVC.tweet = myTweets[(index?.row)!]
+        }
     }
     
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//            let tweetViewController = segue.destination as! TweetDetails
+//            let index = tweetTableView.indexPath(for: sender as! TweetCell)
+//            tweetViewController.tweet = myTweets[(index?.row)!]
+//        }
+//    
     /*
     // MARK: - Navigation
 
