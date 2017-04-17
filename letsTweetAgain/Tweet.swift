@@ -15,10 +15,24 @@ class Tweet: NSObject {
     var likesCount: Int = 0
     var timeStamp: Date?
     
+    var user: NSDictionary?
+    var profileImageURL: String? {
+        get {
+            return user?["profile_image_url_https"] as? String
+        }
+    }
+    
+    var userName: String? {
+        get {
+            return user?["name"] as? String
+        }
+    }
+    
     init (tweetDictionary: NSDictionary){
         text = tweetDictionary["text"] as? String
         retweetCount = (tweetDictionary["retweet_count"] as? Int) ?? 0
         likesCount = (tweetDictionary["favourites_count"] as? Int) ?? 0
+        user = tweetDictionary["user"] as? NSDictionary
         
         let timeStampString = tweetDictionary["created_at"] as? String
         

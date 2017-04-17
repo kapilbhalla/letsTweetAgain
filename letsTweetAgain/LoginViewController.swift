@@ -18,6 +18,8 @@ class LoginViewController: UIViewController {
         twitterClient?.login(success: { () -> () in
             print("Iam logged in")
             
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            
         }, failure: { (error: Error) in
             print(error.localizedDescription)
         })
