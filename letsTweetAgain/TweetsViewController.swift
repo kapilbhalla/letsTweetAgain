@@ -47,6 +47,17 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
         }
     }
     
+    private func customizeNavigationBar() {
+        navigationController?.navigationBar.barTintColor = UIColor(red: 64/255, green: 153/255, blue: 255/255, alpha: 1)
+        
+        if let navigationBar = navigationController?.navigationBar {
+            navigationBar.tintColor = .white
+            
+            let attributeColor = UIColor.white
+            navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: attributeColor]
+        }
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -73,6 +84,23 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let tweetViewController = segue.destination as! TweetDetails
+        let index = tweetTableView.indexPath(for: sender as! TweetCell)
+        tweetViewController.tweet = myTweets[(index?.row)!]
+        
+        //let navigationController = segue.destination as? UINavigationController
+//        if let destinationVC = navigationController?.topViewController as? ComposeTweetViewController {
+//            destinationVC.delegate = self
+//        }
+        
+//        if let destinationVC = navigationController?.topViewController as? TweetDetails {
+//        
+//        }
     }
     
     /*

@@ -16,6 +16,7 @@ class Tweet: NSObject {
     var timeStamp: Date?
     
     var user: NSDictionary?
+    
     var profileImageURL: String? {
         get {
             return user?["profile_image_url_https"] as? String

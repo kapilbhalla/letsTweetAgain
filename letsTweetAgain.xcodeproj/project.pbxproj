@@ -19,6 +19,7 @@
 		90A31D4F1EA400270043986F /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A31D4E1EA400270043986F /* TwitterClient.swift */; };
 		90A31D511EA42ACD0043986F /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A31D501EA42ACD0043986F /* TweetsViewController.swift */; };
 		90A31D531EA4398D0043986F /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A31D521EA4398D0043986F /* TweetCell.swift */; };
+		90A31D561EA46CFE0043986F /* TweetDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A31D551EA46CFE0043986F /* TweetDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		90A31D4E1EA400270043986F /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 		90A31D501EA42ACD0043986F /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
 		90A31D521EA4398D0043986F /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
+		90A31D551EA46CFE0043986F /* TweetDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetDetails.swift; sourceTree = "<group>"; };
 		CA8FC54C8A7A48E12817D469 /* Pods-letsTweetAgain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-letsTweetAgain.debug.xcconfig"; path = "Pods/Target Support Files/Pods-letsTweetAgain/Pods-letsTweetAgain.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 			children = (
 				90A31D471EA349140043986F /* LoginViewController.swift */,
 				90A31D501EA42ACD0043986F /* TweetsViewController.swift */,
+				90A31D551EA46CFE0043986F /* TweetDetails.swift */,
 			);
 			name = viewController;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				90A31D4A1EA3EE600043986F /* User.swift in Sources */,
 				90A31D4C1EA3EE730043986F /* Tweet.swift in Sources */,
 				90A31D481EA349140043986F /* LoginViewController.swift in Sources */,
+				90A31D561EA46CFE0043986F /* TweetDetails.swift in Sources */,
 				90A31D531EA4398D0043986F /* TweetCell.swift in Sources */,
 				90A31D351EA345520043986F /* ViewController.swift in Sources */,
 				90A31D511EA42ACD0043986F /* TweetsViewController.swift in Sources */,
