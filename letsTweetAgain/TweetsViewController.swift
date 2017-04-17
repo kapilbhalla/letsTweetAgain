@@ -126,7 +126,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
         let navigationController = segue.destination as? UINavigationController
         if let destinationVC = navigationController?.topViewController as? CreateTweetViewController {
             destinationVC.userDetails = self.currentUser
-            //destinationVC.delegate = self
+            destinationVC.delegate = self
         }
         if let destinationVC = navigationController?.topViewController as? TweetDetails {
             let index = tweetTableView.indexPath(for: sender as! TweetCell)

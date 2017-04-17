@@ -35,11 +35,13 @@ class Tweet: NSObject {
     
     
     init (tweetDictionary: NSDictionary){
+        print (tweetDictionary)
         id = tweetDictionary["id"] as? NSNumber
         text = tweetDictionary["text"] as? String
         retweetCount = (tweetDictionary["retweet_count"] as? Int) ?? 0
-        likesCount = (tweetDictionary["favourites_count"] as? Int) ?? 0
+        
         user = tweetDictionary["user"] as? NSDictionary
+        likesCount = (user?["favourites_count"] as? Int) ?? 0
         profileImageURL = user?["profile_image_url_https"] as? String
         
         let timeStampString = tweetDictionary["created_at"] as? String
