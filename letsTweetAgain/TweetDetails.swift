@@ -10,12 +10,17 @@ import UIKit
 
 class TweetDetails: UIViewController {
 
-    var tweet: Tweet?
-    
+    var tweet: Tweet?{
+        didSet {
+            //bindView()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         bindView ()
+        customizeNavigationBar()
         // Do any additional setup after loading the view.
     }
     
@@ -37,16 +42,51 @@ class TweetDetails: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
     @IBAction func onTapFavourites(_ sender: Any) {
+        if let id = tweet?.id {
+            TwitterClient.sharedInstance?.markAsFavorite(withID: id, success: { (tweet: Tweet) in
+                
+                // Update tweet's data
+                self.tweet = tweet
+                
+            }, failure: { (error: Error) in
+                print(error.localizedDescription)
+            })
+        }
+    }
+
+    private func customizeNavigationBar() {
+        navigationController?.navigationBar.barTintColor = UIColor(red: 64/255, green: 153/255, blue: 255/255, alpha: 1)
+        
+        if let navigationBar = navigationController?.navigationBar {
+            navigationBar.tintColor = .white
+            
+            let attributeColor = UIColor.white
+            navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: attributeColor]
+        }
     }
 
     @IBAction func onTapReply(_ sender: Any) {
+        print("Tap reply clicked")
     }
     
     @IBAction func onTapRetweet(_ sender: Any) {
+        if let id = tweet?.id {
+            TwitterClient.sharedInstance?.retweeting(withID: id, success: { (tweet: Tweet) in
+                
+                // Update tweet's data
+                self.tweet = tweet
+                
+            }, failure: { (error: Error) in
+                print(error.localizedDescription)
+            })
+        }
     }
     
+    @IBAction func onTapCancel(_ sender: Any) {
+        self.dismiss(animated: true) { 
+        }
+    }
     
     @IBOutlet weak var retweetLabel: UILabel!
     @IBOutlet weak var retweetCount: UILabel!

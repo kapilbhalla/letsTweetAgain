@@ -56,15 +56,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="111" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i31-ax-XTE">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="124" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i31-ax-XTE">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="tweetCell" rowHeight="111" id="CuR-ya-Brb" customClass="TweetCell" customModule="letsTweetAgain" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="111"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="tweetCell" rowHeight="124" id="CuR-ya-Brb" customClass="TweetCell" customModule="letsTweetAgain" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CuR-ya-Brb" id="JCz-F9-bTC">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="110.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="123.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tweet text will be displayed here" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2F-Hs-fdD" userLabel="tweetText">
@@ -101,14 +101,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gut-sV-ii8" userLabel="markFavourite">
-                                                    <rect key="frame" x="174" y="88" width="15" height="15"/>
+                                                    <rect key="frame" x="174" y="100.5" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="15" id="FNR-gw-olo"/>
                                                         <constraint firstAttribute="height" constant="15" id="cAC-cD-BYy"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sLk-jC-gjh" userLabel="reply">
-                                                    <rect key="frame" x="84" y="88" width="15" height="15"/>
+                                                    <rect key="frame" x="84" y="100.5" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="15" id="JYG-0D-kMd"/>
                                                         <constraint firstAttribute="height" constant="15" id="sK6-fZ-ne6"/>
@@ -129,7 +129,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ay4-2V-baz" userLabel="retweet">
-                                                    <rect key="frame" x="129" y="88" width="15" height="15"/>
+                                                    <rect key="frame" x="129" y="100.5" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="jDl-z9-4WX"/>
                                                         <constraint firstAttribute="width" constant="15" id="xc2-gg-NGs"/>
@@ -170,7 +170,7 @@
                                             <outlet property="tweetText" destination="c2F-Hs-fdD" id="5Pz-lW-iDZ"/>
                                             <outlet property="userHandle" destination="yyh-jg-QHN" id="gyj-7b-K0Z"/>
                                             <outlet property="userName" destination="ADj-FJ-j7b" id="e06-Aj-LW2"/>
-                                            <segue destination="x3x-En-yjC" kind="push" id="uzA-JQ-gWP"/>
+                                            <segue destination="4Ud-fa-8cE" kind="showDetail" id="uzA-JQ-gWP"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -364,6 +364,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Tweet" id="4if-UT-6Uj">
                         <barButtonItem key="backBarButtonItem" title="back" id="5Zn-rE-7R0"/>
+                        <barButtonItem key="leftBarButtonItem" title="back" id="P2p-EZ-knP">
+                            <connections>
+                                <action selector="onTapCancel:" destination="x3x-En-yjC" id="gLv-A7-t85"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="reply" id="Vjk-YD-nlG"/>
                     </navigationItem>
                     <connections>
@@ -378,7 +383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9e8-fO-jhR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2399" y="143"/>
+            <point key="canvasLocation" x="3336.8000000000002" y="142.57871064467767"/>
         </scene>
         <!--Create Tweet View Controller-->
         <scene sceneID="6SG-9Q-9QX">
@@ -462,7 +467,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ZgN-BN-HdH">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QHq-Oe-uUB" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="QHq-Oe-uUB" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HdA-f2-5qw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -494,6 +499,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NnW-ez-8zz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2253.5999999999999" y="856.82158920539734"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="11n-6R-1qn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4Ud-fa-8cE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fKI-m9-Gwr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="x3x-En-yjC" kind="relationship" relationship="rootViewController" id="qBd-gP-pLI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E1e-lf-AlH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2397.5999999999999" y="142.57871064467767"/>
         </scene>
     </scenes>
 </document>

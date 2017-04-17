@@ -8,9 +8,15 @@
 
 import UIKit
 
+
+protocol CreateTweetViewControllerDelegate {
+    func createTweetViewController(createTweetViewController: CreateTweetViewController, didCreateTweet tweet: Tweet)
+}
+
 class CreateTweetViewController: UIViewController {
 
     var userDetails: User?
+    var delegate: CreateTweetViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +44,18 @@ class CreateTweetViewController: UIViewController {
     }
 
     @IBAction func onTapTweet(_ sender: Any) {
+        if let newTweetMessage = tweetText.text {
+            
+            // Post the new tweet om Twitter
+            TwitterClient.sharedInstance?.createNewTweet(withMessage: newTweetMessage, success: { (tweet: Tweet) in
+                self.delegate?.createTweetViewController(createTweetViewController: self, didCreateTweet: tweet)
+                
+            }, failure: { (error: Error) in
+                print(error.localizedDescription)
+            })
+            
+        }
+        
         self.dismiss(animated: true, completion: nil)
     }
     

@@ -22,11 +22,7 @@ class Tweet: NSObject {
     
     var user: NSDictionary?
     
-    var profileImageURL: String? {
-        get {
-            return user?["profile_image_url_https"] as? String
-        }
-    }
+    var profileImageURL: String?
     
     var userName: String? {
         get {
@@ -34,11 +30,17 @@ class Tweet: NSObject {
         }
     }
     
+    var id: NSNumber?
+    
+    
+    
     init (tweetDictionary: NSDictionary){
+        id = tweetDictionary["id"] as? NSNumber
         text = tweetDictionary["text"] as? String
         retweetCount = (tweetDictionary["retweet_count"] as? Int) ?? 0
         likesCount = (tweetDictionary["favourites_count"] as? Int) ?? 0
         user = tweetDictionary["user"] as? NSDictionary
+        profileImageURL = user?["profile_image_url_https"] as? String
         
         let timeStampString = tweetDictionary["created_at"] as? String
         

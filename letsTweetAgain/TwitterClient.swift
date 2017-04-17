@@ -89,6 +89,55 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    private let createNewTweetEndpoint = "1.1/statuses/update.json"
+    func createNewTweet(withMessage text: String, success: @escaping (Tweet) -> () , failure: @escaping (Error) -> ()) {
+        let param: [String: Any] = ["status": text]
+        post(createNewTweetEndpoint, parameters: param, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            
+            let tweet = Tweet(tweetDictionary: response as! NSDictionary)
+            success(tweet)
+            
+        }) { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+            
+        }
+    }
+    
+    private let retweetEndpoint = "1.1/statuses/retweet/:id.json"
+    func retweeting(withID id: NSNumber, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
+        let retweetingEndpoint = retweetEndpoint.replacingOccurrences(of: ":id", with: "\(id)")
+        let param: [String: Any] = ["id": id]
+        post(retweetingEndpoint, parameters: param, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            
+            let tweet = Tweet(tweetDictionary: response as! NSDictionary)
+            success(tweet)
+            
+        }) { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+        }
+    }
+    
+    private let markAsFavoriteEndpoint = "1.1/favorites/create.json"
+    func markAsFavorite(withID id: NSNumber, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
+        let param: [String: Any] = ["id": id]
+        post(markAsFavoriteEndpoint, parameters: param, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            
+            let tweet = Tweet(tweetDictionary: response as! NSDictionary)
+            success(tweet)
+            
+        }) { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+        }
+    }
+    
+    func logout() {
+        User.currentUser = nil
+        deauthorize()
+        
+        // Go back to the Login window
+        NotificationCenter.default.post(name: NSNotification.Name(User.didLogOutNotification), object: nil)
+    }
+    
     /*
         Handle open url function is called from the appDelegate when the system notifies that a command handling request is
         being posted. On this we have already saved callback handlers when the original login was requested.
