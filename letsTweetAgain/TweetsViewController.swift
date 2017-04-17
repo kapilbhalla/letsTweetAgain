@@ -9,6 +9,15 @@
 import UIKit
 
 class TweetsViewController: UIViewController, UITableViewDataSource {
+    
+    func refreshControlAction(refreshControl: UIRefreshControl) {
+        // Tell the refreshControl to stop spinning
+        if (refreshControl.isRefreshing){
+            refreshControl.endRefreshing()
+        } else {
+            loadTweets()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,10 +27,19 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
         tweetTableView.rowHeight = UITableViewAutomaticDimension
         tweetTableView.estimatedRowHeight = 100
 
+        // Initialize a UIRefreshControl
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
+        
+        // add refresh control to table view
+        tweetTableView.insertSubview(refreshControl, at: 0)
         
         loadTweets()
         // Do any additional setup after loading the view.
     }
+    
+    
 
     @IBOutlet weak var tweetTableView: UITableView!
     
@@ -77,6 +95,10 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
         cell.tweetText.text = myTweets[indexPath.row].text
         // myTweets[indexPath.row].
         cell.userName.text = myTweets[indexPath.row].userName
+        
+        let screenName: String = myTweets[indexPath.row].screenName!
+        cell.userHandle.text = screenName
+        
         let profileImageUrl = myTweets[indexPath.row].profileImageURL
         
         if let profileImageUrlUnwrapped = profileImageUrl {

@@ -14,6 +14,11 @@ class Tweet: NSObject {
     var retweetCount: Int = 0
     var likesCount: Int = 0
     var timeStamp: Date?
+    var screenName: String? {
+        get {
+            return user?["screen_name"] as? String
+        }
+    }
     
     var user: NSDictionary?
     

@@ -26,7 +26,7 @@ class TweetDetails: UIViewController {
             tweetText.text = tweet?.text
             favouritesCount.text = "\(tweet?.likesCount ?? 0)"
             retweetCount.text = "\(tweet?.retweetCount ?? 0)"
-            
+            handle.text = tweet?.screenName
             //handle.text = tweet?.use
         }
     }
