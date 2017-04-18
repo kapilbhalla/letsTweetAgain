@@ -38,6 +38,7 @@ class User: NSObject {
     private let dictionary: NSDictionary
     
     private static var _currentUser: User?
+    
     class var currentUser: User? {
         get {
             if _currentUser == nil {

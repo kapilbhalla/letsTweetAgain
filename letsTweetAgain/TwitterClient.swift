@@ -150,23 +150,6 @@ class TwitterClient: BDBOAuth1SessionManager {
            // print ("I got the access token")
 
             self.loginSuccess?()
-//            twitterClient?.homeTimeLine(successCB: { (tweets: [Tweet]) in
-//                for tweet in tweets{
-//                    // print(tweet.text)
-//                }
-//            }, failureCB: { (error: Error) in
-//                
-//            })
-            
-//            twitterClient?.validateUser(successCB: { (aUser: User) in
-//                print(aUser.name)
-//                print(aUser.screenName)
-//                print(aUser.profileURL)
-//                print(aUser.tagline)
-//                
-//            }, failuerCB: { (error: Error) in
-//                
-//            })
         }, failure: { (error: Error?) in
             print (error?.localizedDescription)
             if let errorUnwrapped = error {

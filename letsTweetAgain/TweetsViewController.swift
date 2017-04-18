@@ -44,6 +44,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
     func loadUser () {
         TwitterClient.sharedInstance?.validateUser(successCB: { (returnedUser: User) in
            self.currentUser = returnedUser
+            User.currentUser = self.currentUser
         }, failuerCB: { (error: Error) in
             print(error.localizedDescription)
         })
