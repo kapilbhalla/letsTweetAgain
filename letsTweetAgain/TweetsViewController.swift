@@ -11,15 +11,10 @@ import UIKit
 
 class TweetsViewController: UIViewController, UITableViewDataSource {
     
-    func refreshControlAction(refreshControl: UIRefreshControl) {
-        // Tell the refreshControl to stop spinning
-        if (refreshControl.isRefreshing){
-            refreshControl.endRefreshing()
-        } else {
-            loadTweets()
-        }
-    }
-
+    @IBOutlet weak var tweetTableView: UITableView!
+    var myTweets: [Tweet] = []
+    var currentUser: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,7 +24,6 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
         tweetTableView.estimatedRowHeight = 100
 
         // Initialize a UIRefreshControl
-        
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(self.refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
         customizeNavigationBar()
@@ -37,16 +31,15 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
         // add refresh control to table view
         tweetTableView.insertSubview(refreshControl, at: 0)
         loadUser()
-        loadTweets()
+        loadTweets(refreshControl: refreshControl)
         
         // Do any additional setup after loading the view.
     }
-    
-    
 
-    @IBOutlet weak var tweetTableView: UITableView!
-    var myTweets: [Tweet] = []
-    var currentUser: User?
+    func refreshControlAction(refreshControl: UIRefreshControl) {
+        // Tell the refreshControl to stop spinning
+        loadTweets(refreshControl: refreshControl)
+    }
     
     func loadUser () {
         TwitterClient.sharedInstance?.validateUser(successCB: { (returnedUser: User) in
@@ -56,10 +49,14 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
         })
     }
     
-    func loadTweets () {
+    func loadTweets (refreshControl: UIRefreshControl?) {
         TwitterClient.sharedInstance?.homeTimeLine(successCB: { (tweets: [Tweet]) in
             self.myTweets = tweets
             self.printTweets(tweets: tweets)
+            
+            if (refreshControl?.isRefreshing)!{
+                refreshControl?.endRefreshing()
+            }
             
             // refresh the table view to load again
             self.tweetTableView.reloadData()
