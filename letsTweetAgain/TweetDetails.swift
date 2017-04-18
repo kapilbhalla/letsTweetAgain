@@ -32,6 +32,11 @@ class TweetDetails: UIViewController {
             favouritesCount.text = "\(tweet?.likesCount ?? 0)"
             retweetCount.text = "\(tweet?.retweetCount ?? 0)"
             handle.text = tweet?.screenName
+            if (tweet!.isTweet){
+                retweetLabel.text = ""
+            } else {
+                retweetLabel.text = tweet?.retweetName
+            }
             //handle.text = tweet?.use
         }
     }
@@ -48,7 +53,7 @@ class TweetDetails: UIViewController {
                 
                 // Update tweet's data
                 self.tweet = tweet
-                
+                self.bindView()
             }, failure: { (error: Error) in
                 print(error.localizedDescription)
             })
@@ -76,7 +81,8 @@ class TweetDetails: UIViewController {
                 
                 // Update tweet's data
                 self.tweet = tweet
-                
+                self.bindView()
+
             }, failure: { (error: Error) in
                 print(error.localizedDescription)
             })

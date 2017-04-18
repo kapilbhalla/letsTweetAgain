@@ -104,20 +104,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
         // Extract the cell displayed in the table view
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! TweetCell
-        
-        // Set the cell with appropriate data from the datastructure backing the table View
-        cell.tweetText.text = myTweets[indexPath.row].text
-        // myTweets[indexPath.row].
-        cell.userName.text = myTweets[indexPath.row].userName
-        
-        let screenName: String = myTweets[indexPath.row].screenName!
-        cell.userHandle.text = screenName
-        
-        let profileImageUrl = myTweets[indexPath.row].profileImageURL
-        
-        if let profileImageUrlUnwrapped = profileImageUrl {
-            cell.profileImage.setImageWith(URL(string: profileImageUrlUnwrapped)!)
-        }
+        // set the tweet in the tweet cell.
+        cell.tweet = myTweets[indexPath.row]
         
         return cell
     }

@@ -64,7 +64,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CuR-ya-Brb" id="JCz-F9-bTC">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="123.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="124"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tweet text will be displayed here" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2F-Hs-fdD" userLabel="tweetText">
@@ -80,8 +80,8 @@
                                                         <constraint firstAttribute="height" constant="50" id="UWx-Ic-Y3X"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="who retweeted" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gc6-lh-VmQ" userLabel="retweetDetails">
-                                                    <rect key="frame" x="68" y="8" width="84" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gc6-lh-VmQ" userLabel="retweetDetails">
+                                                    <rect key="frame" x="68" y="23" width="0.0" height="0.0"/>
                                                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -100,14 +100,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gut-sV-ii8" userLabel="markFavourite">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Like-50" translatesAutoresizingMaskIntoConstraints="NO" id="Gut-sV-ii8" userLabel="markFavourite">
                                                     <rect key="frame" x="174" y="100.5" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="15" id="FNR-gw-olo"/>
                                                         <constraint firstAttribute="height" constant="15" id="cAC-cD-BYy"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sLk-jC-gjh" userLabel="reply">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Reply Arrow-64" translatesAutoresizingMaskIntoConstraints="NO" id="sLk-jC-gjh" userLabel="reply">
                                                     <rect key="frame" x="84" y="100.5" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="15" id="JYG-0D-kMd"/>
@@ -128,7 +128,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ay4-2V-baz" userLabel="retweet">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Retweet-64" translatesAutoresizingMaskIntoConstraints="NO" id="ay4-2V-baz" userLabel="retweet">
                                                     <rect key="frame" x="129" y="100.5" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="jDl-z9-4WX"/>
@@ -164,8 +164,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="favouriteImage" destination="Gut-sV-ii8" id="SGZ-Oj-ZW2"/>
                                             <outlet property="profileImage" destination="dcv-zh-2ep" id="A7I-An-niT"/>
+                                            <outlet property="replyImage" destination="sLk-jC-gjh" id="HLf-9Y-jQM"/>
                                             <outlet property="retweetDetails" destination="gc6-lh-VmQ" id="2aQ-vF-4EO"/>
+                                            <outlet property="retweetImg" destination="ay4-2V-baz" id="t5X-Q9-h0v"/>
                                             <outlet property="timestamp" destination="c0v-Bb-7fO" id="YHN-uz-knr"/>
                                             <outlet property="tweetText" destination="c2F-Hs-fdD" id="5Pz-lW-iDZ"/>
                                             <outlet property="userHandle" destination="yyh-jg-QHN" id="gyj-7b-K0Z"/>
@@ -280,7 +283,7 @@
                                     <action selector="onTapReply:" destination="x3x-En-yjC" eventType="touchUpInside" id="bgS-of-gfQ"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AIq-FS-gLN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Retweet-64" translatesAutoresizingMaskIntoConstraints="NO" id="AIq-FS-gLN">
                                 <rect key="frame" x="63" y="72" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="XHQ-cs-QZz"/>
@@ -519,4 +522,9 @@
             <point key="canvasLocation" x="2397.5999999999999" y="142.57871064467767"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Like-50" width="50" height="50"/>
+        <image name="Reply Arrow-64" width="64" height="64"/>
+        <image name="Retweet-64" width="64" height="64"/>
+    </resources>
 </document>
