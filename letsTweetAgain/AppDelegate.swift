@@ -22,8 +22,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         if User.currentUser != nil {
-            let vc = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
-            window?.rootViewController = vc
+            
+//            let vc = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
+//            window?.rootViewController = vc
+            
+            print("setting HamMenu View Controller in appDelegate")
+            
+            let hamNavController = storyboard.instantiateViewController(withIdentifier: "HamMenuNavController") as! UINavigationController
+            let hamMenuViewController = hamNavController.topViewController as! HamMenuViewController
+            window?.rootViewController = hamNavController
+            
+            let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+            
+            menuViewController.hamburgerViewController = hamMenuViewController
+            hamMenuViewController.menuViewController = menuViewController
+            
         }
         else {
             print("There is no current user!")

@@ -35,6 +35,23 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    let twitterUserTimeLinePath = "1.1/statuses/user_timeline.json"
+    func userTimeline(parameters: [String: AnyObject]? ,success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        
+        get(twitterUserTimeLinePath, parameters: parameters, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            
+            let tweetDictionaries = response as! [NSDictionary]
+            let tweets = Tweet.tweetsWithArray(tweetDictionaries: tweetDictionaries)
+            success(tweets)
+            
+        }, failure: { (task: URLSessionDataTask?, error: Error?) in
+            
+            failure(error!)
+            
+        })
+    }
+
+    
     func validateUser(successCB: @escaping (User) -> (),
                       failuerCB: @escaping (Error) -> ()) {
         get("1.1/account/verify_credentials.json", parameters: nil, progress: nil,
