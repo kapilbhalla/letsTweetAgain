@@ -21,6 +21,7 @@
 		90A31D531EA4398D0043986F /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A31D521EA4398D0043986F /* TweetCell.swift */; };
 		90A31D561EA46CFE0043986F /* TweetDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A31D551EA46CFE0043986F /* TweetDetails.swift */; };
 		90A31D581EA4914F0043986F /* CreateTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A31D571EA4914F0043986F /* CreateTweetViewController.swift */; };
+		90B14A411EB11E43004FFAFC /* MentionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B14A401EB11E43004FFAFC /* MentionsViewController.swift */; };
 		90EB480D1EADC5300096B91A /* HamMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EB480C1EADC5300096B91A /* HamMenuViewController.swift */; };
 		90EB480F1EADC5CB0096B91A /* HamMenuNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EB480E1EADC5CB0096B91A /* HamMenuNavController.swift */; };
 		90EB48111EADC6D30096B91A /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EB48101EADC6D30096B91A /* AccountViewController.swift */; };
@@ -50,6 +51,7 @@
 		90A31D521EA4398D0043986F /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		90A31D551EA46CFE0043986F /* TweetDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetDetails.swift; sourceTree = "<group>"; };
 		90A31D571EA4914F0043986F /* CreateTweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTweetViewController.swift; sourceTree = "<group>"; };
+		90B14A401EB11E43004FFAFC /* MentionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentionsViewController.swift; sourceTree = "<group>"; };
 		90EB480C1EADC5300096B91A /* HamMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamMenuViewController.swift; sourceTree = "<group>"; };
 		90EB480E1EADC5CB0096B91A /* HamMenuNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamMenuNavController.swift; sourceTree = "<group>"; };
 		90EB48101EADC6D30096B91A /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				90EB48101EADC6D30096B91A /* AccountViewController.swift */,
 				90EB48121EADDA400096B91A /* MenuViewController.swift */,
 				90EB48161EADE6D50096B91A /* ProfileViewController.swift */,
+				90B14A401EB11E43004FFAFC /* MentionsViewController.swift */,
 			);
 			name = viewController;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90EB48191EADEC620096B91A /* ProfileCell.swift in Sources */,
+				90B14A411EB11E43004FFAFC /* MentionsViewController.swift in Sources */,
 				90A31D4A1EA3EE600043986F /* User.swift in Sources */,
 				90EB48151EADDE730096B91A /* MenuCellTableViewCell.swift in Sources */,
 				90A31D4C1EA3EE730043986F /* Tweet.swift in Sources */,

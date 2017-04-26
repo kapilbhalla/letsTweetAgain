@@ -35,6 +35,23 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    let twitterMentionsPath = "1.1/statuses/mentions_timeline.json"
+    func mentions(parameters: [String: AnyObject]? ,success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        
+        get(twitterMentionsPath, parameters: parameters, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            
+            let dictionariesArray = response as! [NSDictionary]
+            let tweets = Tweet.tweetsWithArray(tweetDictionaries: dictionariesArray)
+            success(tweets)
+            
+        }, failure: { (task: URLSessionDataTask?, error: Error?) in
+            
+            failure(error!)
+            
+        })
+    }
+
+    
     let twitterUserTimeLinePath = "1.1/statuses/user_timeline.json"
     func userTimeline(parameters: [String: AnyObject]? ,success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
         
@@ -119,6 +136,7 @@ class TwitterClient: BDBOAuth1SessionManager {
             
         }
     }
+    
     
     private let retweetEndpoint = "1.1/statuses/retweet/:id.json"
     func retweeting(withID id: NSNumber, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {

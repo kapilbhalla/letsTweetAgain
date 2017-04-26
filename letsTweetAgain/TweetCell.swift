@@ -22,9 +22,10 @@ class TweetCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        addGesturesToImages()
         self.profileImage.layer.cornerRadius = 5
         self.profileImage.clipsToBounds = true
-        addGesturesToImages()
+        
         // Initialization code
     }
 

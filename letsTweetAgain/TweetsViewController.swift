@@ -15,6 +15,11 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
     var myTweets: [Tweet] = []
     var currentUser: User?
     
+    @IBAction func onTapImage(_ sender: UITapGestureRecognizer) {
+        // trying to get the tap image to work.
+        // have tried the progrmatic setting of TapGesture it was not working. Finally got it to work.
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -75,14 +80,14 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
     }
     
     private func customizeNavigationBar() {
-//        navigationController?.navigationBar.barTintColor = UIColor(red: 64/255, green: 153/255, blue: 255/255, alpha: 1)
-//        
-//        if let navigationBar = navigationController?.navigationBar {
-//            navigationBar.tintColor = .white
-//            
-//            let attributeColor = UIColor.white
-//            navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: attributeColor]
-//        }
+        navigationController?.navigationBar.barTintColor = UIColor(red: 64/255, green: 153/255, blue: 255/255, alpha: 1)
+        
+        if let navigationBar = navigationController?.navigationBar {
+            navigationBar.tintColor = .white
+            
+            let attributeColor = UIColor.white
+            navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: attributeColor]
+        }
     }
     
     @IBAction func onTweet(_ sender: Any) {
@@ -104,10 +109,21 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! TweetCell
         // set the tweet in the tweet cell.
         cell.tweet = myTweets[indexPath.row]
+        cell.delegate = self
         cell.indexPath = indexPath
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "TweetDetails") as! TweetDetails
+        
+        vc.tweet = myTweets[indexPath.row]
+        
+        self.show(vc, sender: nil)
+    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let navigationController = segue.destination as? UINavigationController
