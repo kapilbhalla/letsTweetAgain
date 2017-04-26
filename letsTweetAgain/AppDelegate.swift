@@ -28,9 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             print("setting HamMenu View Controller in appDelegate")
             
-            let hamNavController = storyboard.instantiateViewController(withIdentifier: "HamMenuNavController") as! UINavigationController
-            let hamMenuViewController = hamNavController.topViewController as! HamMenuViewController
-            window?.rootViewController = hamNavController
+            let hamMenuViewController = storyboard.instantiateViewController(withIdentifier: "HamMenuViewController") as! HamMenuViewController
+            window?.rootViewController = hamMenuViewController
             
             let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
             

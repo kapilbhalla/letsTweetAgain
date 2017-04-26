@@ -61,14 +61,14 @@ class TweetDetails: UIViewController {
     }
 
     private func customizeNavigationBar() {
-        navigationController?.navigationBar.barTintColor = UIColor(red: 64/255, green: 153/255, blue: 255/255, alpha: 1)
-        
-        if let navigationBar = navigationController?.navigationBar {
-            navigationBar.tintColor = .white
-            
-            let attributeColor = UIColor.white
-            navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: attributeColor]
-        }
+//        navigationController?.navigationBar.barTintColor = UIColor(red: 64/255, green: 153/255, blue: 255/255, alpha: 1)
+//        
+//        if let navigationBar = navigationController?.navigationBar {
+//            navigationBar.tintColor = .white
+//            
+//            let attributeColor = UIColor.white
+//            navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: attributeColor]
+//        }
     }
 
     @IBAction func onTapReply(_ sender: Any) {

@@ -14,7 +14,7 @@ class MenuViewController: UIViewController {
     var hamburgerViewController: HamMenuViewController!
     
     private var profileViewController: ProfileViewController!
-    private var homeTimeLineViewController: TweetsViewController!
+    private var homeTimeLineViewController: UINavigationController!
     //private var mentionsViewController: MentionsViewController!
     private var accountsViewController: AccountViewController!
     let menuLabels = ["Profile", "TimeLine", "Mentions", "Accounts"]
@@ -41,7 +41,7 @@ class MenuViewController: UIViewController {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         profileViewController = storyBoard.instantiateViewController(withIdentifier: "UserProfileView") as! ProfileViewController
         homeTimeLineViewController = storyBoard.instantiateViewController(withIdentifier:
-            "HomeTimeLineViewController") as! TweetsViewController
+            "TweetsNavigationController") as! UINavigationController
 //        mentionsViewController = storyBoard.instantiateViewController(withIdentifier: "MentionsViewController") as! MentionsViewController
         accountsViewController = storyBoard.instantiateViewController(withIdentifier: "AccountView") as! AccountViewController
 //        accountsViewController.hamburgerViewController = hamburgerViewController

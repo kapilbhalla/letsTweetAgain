@@ -27,8 +27,8 @@ class ProfileViewController: UIViewController {
         tableView.dataSource = self
         
         tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.sectionHeaderHeight = 300
-        tableView.estimatedRowHeight = 200
+        self.tableView.sectionHeaderHeight = 100
+        tableView.estimatedRowHeight = 100
 
     }
     
@@ -43,6 +43,8 @@ class ProfileViewController: UIViewController {
         if user == nil {
             user = User.currentUser
         }
+        
+        self.tweets.removeAll()
         getTweetsForUser(user: user)
         
         //headerView = Bundle.main.loadNibNamed("ProfileCell", owner: self, options: nil)?.first as! ProfileCell
@@ -105,6 +107,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         //tableView.tableHeaderView = headerView
         
         return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 250
     }
     
 }

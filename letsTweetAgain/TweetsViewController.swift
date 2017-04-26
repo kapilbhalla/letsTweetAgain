@@ -75,14 +75,14 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
     }
     
     private func customizeNavigationBar() {
-        navigationController?.navigationBar.barTintColor = UIColor(red: 64/255, green: 153/255, blue: 255/255, alpha: 1)
-        
-        if let navigationBar = navigationController?.navigationBar {
-            navigationBar.tintColor = .white
-            
-            let attributeColor = UIColor.white
-            navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: attributeColor]
-        }
+//        navigationController?.navigationBar.barTintColor = UIColor(red: 64/255, green: 153/255, blue: 255/255, alpha: 1)
+//        
+//        if let navigationBar = navigationController?.navigationBar {
+//            navigationBar.tintColor = .white
+//            
+//            let attributeColor = UIColor.white
+//            navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: attributeColor]
+//        }
     }
     
     @IBAction func onTweet(_ sender: Any) {
@@ -104,6 +104,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! TweetCell
         // set the tweet in the tweet cell.
         cell.tweet = myTweets[indexPath.row]
+        cell.indexPath = indexPath
         
         return cell
     }
@@ -114,7 +115,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
             destinationVC.userDetails = self.currentUser
             destinationVC.delegate = self
         }
-        if let destinationVC = navigationController?.topViewController as? TweetDetails {
+        if let destinationVC = segue.destination as? TweetDetails {
             let index = tweetTableView.indexPath(for: sender as! TweetCell)
             destinationVC.tweet = myTweets[(index?.row)!]
         }
@@ -127,4 +128,35 @@ extension TweetsViewController: CreateTweetViewControllerDelegate {
         tweetTableView.reloadData()
     }
 }
+
+extension TweetsViewController : TweetCellDelegate {
+    
+    func replyButtonTapped(tweetCell: TweetCell) {
+    // TBD
+    }
+    
+    func retweetButtonTapped(tweetCell: TweetCell) {
+        // TBD
+    }
+    
+    func favouriteTapped(tweetCell: TweetCell) {
+        //TBD
+    }
+    
+    func profileImageTapped(tweetCell: TweetCell) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let profileViewController = storyboard.instantiateViewController(withIdentifier: "UserProfileView") as! ProfileViewController
+        
+        let aTweet:Tweet = myTweets[tweetCell.indexPath.row]
+        
+        profileViewController.user = aTweet.containedUser
+        self.show(profileViewController, sender: nil)
+    }
+    
+}
+
+
+
 

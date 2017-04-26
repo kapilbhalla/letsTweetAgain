@@ -22,6 +22,7 @@ class ProfileCell: UITableViewCell {
     var user: User! {
         didSet {
             userBackgroundImageView.setImageWith(user.profileBackgroundImageUrl!)
+            userImageView.setImageWith(user.profileURL!)
             userScreeNameLabel.text = user.screenName!
             userNameLabel.text = "@" + user.name!
             followersCountLabel.text = String(user.followerCount!)

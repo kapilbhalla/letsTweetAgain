@@ -22,6 +22,7 @@ class Tweet: NSObject {
     var screenName: String?
     var retweetName: String?
     var user: NSDictionary?
+    var containedUser: User?
     
     var profileImageURL: String?
     
@@ -40,6 +41,8 @@ class Tweet: NSObject {
         id = tweetDictionary["id"] as? NSNumber
         
         user = tweetDictionary["user"] as? NSDictionary
+        containedUser = User(userDictionary: user!)
+        
         profileImageURL = user?["profile_image_url_https"] as? String
         
         let timeStampString = tweetDictionary["created_at"] as? String

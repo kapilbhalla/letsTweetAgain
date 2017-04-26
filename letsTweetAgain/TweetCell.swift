@@ -8,12 +8,23 @@
 
 import UIKit
 
+
+protocol TweetCellDelegate: class {
+    
+    func replyButtonTapped(tweetCell: TweetCell)
+    func retweetButtonTapped(tweetCell: TweetCell)
+    func favouriteTapped(tweetCell: TweetCell)
+    func profileImageTapped(tweetCell: TweetCell)
+    
+}
+
 class TweetCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
         self.profileImage.layer.cornerRadius = 5
         self.profileImage.clipsToBounds = true
+        addGesturesToImages()
         // Initialization code
     }
 
@@ -22,7 +33,49 @@ class TweetCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    weak var delegate: TweetCellDelegate!
 
+
+    func addGesturesToImages() {
+        //reply button
+        var gesture = UITapGestureRecognizer()
+        gesture.addTarget(self, action: #selector(replyTapped))
+        self.replyImage.addGestureRecognizer(gesture)
+        
+        //re tweet button
+        gesture = UITapGestureRecognizer()
+        gesture.addTarget(self, action: #selector(retweetTapped))
+        self.retweetImg.addGestureRecognizer(gesture)
+        
+        //like button
+        gesture = UITapGestureRecognizer()
+        gesture.addTarget(self, action: #selector(favouriteTapped))
+        self.favouriteImage.addGestureRecognizer(gesture)
+        
+        //avatar button
+        gesture = UITapGestureRecognizer()
+        gesture.addTarget(self, action: #selector(profileImageTapped))
+        self.profileImage.addGestureRecognizer(gesture)
+    }
+
+    func replyTapped() {
+        delegate?.replyButtonTapped(tweetCell: self)
+    }
+    
+    func retweetTapped() {
+        delegate?.retweetButtonTapped(tweetCell: self)
+    }
+    
+    func favouriteTapped() {
+        delegate?.favouriteTapped(tweetCell: self)
+    }
+    
+    func profileImageTapped() {
+        delegate?.profileImageTapped(tweetCell: self)
+    }
+    
+
+    
     //weak var delegate: TweetCellDelegate!
     var indexPath: IndexPath!
     
