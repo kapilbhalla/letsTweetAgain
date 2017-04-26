@@ -450,13 +450,6 @@
                             <constraint firstAttribute="trailing" secondItem="lNB-Ua-3lB" secondAttribute="trailing" id="vfw-y1-zcq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="User Profile" id="v5b-Ek-w56">
-                        <barButtonItem key="leftBarButtonItem" title="back" id="GDb-p1-KJ8">
-                            <connections>
-                                <action selector="onTapBack:" destination="38K-lq-iKB" id="MoT-1w-BXW"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="dCF-dV-T4e" id="m1l-wr-nsU"/>
                     </connections>
