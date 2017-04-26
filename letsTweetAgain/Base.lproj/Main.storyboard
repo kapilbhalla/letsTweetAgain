@@ -185,10 +185,10 @@
             </objects>
             <point key="canvasLocation" x="604" y="948.57571214392806"/>
         </scene>
-        <!--User Profile-->
+        <!--User Details-->
         <scene sceneID="Kya-UH-MXP">
             <objects>
-                <viewController storyboardIdentifier="UserProfileView" id="38K-lq-iKB" customClass="ProfileViewController" customModule="letsTweetAgain" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserProfileView" title="User Details" id="38K-lq-iKB" customClass="ProfileViewController" customModule="letsTweetAgain" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6xj-Xv-15r"/>
                         <viewControllerLayoutGuide type="bottom" id="Fc0-Nn-QLf"/>
@@ -1131,24 +1131,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="154-bn-Uyf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-335" y="949"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="iNk-fL-2nk">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Db-OG-REA" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Sgd-z5-2Bx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="38K-lq-iKB" kind="relationship" relationship="rootViewController" id="6eI-1b-0h2"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9J0-eK-E8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1790" y="949"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="KBW-eF-KFM">

@@ -33,10 +33,14 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func onTapBack(_ sender: Any) {
-        dismiss(animated: true) {
-            print("heading back from user profile view")
-            self.user = User.currentUser!
-        }
+        
+        //self.navigationController?.dismiss(animated: true, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+        self.dismiss(animated: true, completion: nil)
+
+//        dismiss(animated: true) {
+//            print("heading back from user profile view")
+//            self.user = User.currentUser!
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -168,7 +168,9 @@ extension TweetsViewController : TweetCellDelegate {
         let aTweet:Tweet = myTweets[tweetCell.indexPath.row]
         
         profileViewController.user = aTweet.containedUser
-        self.show(profileViewController, sender: nil)
+        //self.present(profileViewController, animated: true, completion: nil)
+        self.navigationController?.show(profileViewController, sender: nil)
+//        self.show(profileViewController, sender: nil)
     }
     
 }
